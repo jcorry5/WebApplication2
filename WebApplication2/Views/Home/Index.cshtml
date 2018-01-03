@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="wrapper">
+
+    <div class="side-bar" id="side-menu">
+        <a id="closebutton"class="closeButton">&times;</a>
+        <div class="sidebar-header">
+            <h3 class="menu-headers">Control panel</h3>
+        </div>
+        <div class="sidebar-body" id="control-panel">
+
+            <input type="button" id="openTestImage" value="Open test image" class="btn btn-link  menu-Items" />
+
+            <button type="button" id="downloadImage" class="btn btn-link menu-Items">Download Image</button>
+            <input type="button" id="colourdrop" value="Toggle colour chart" onclick="showHideColour()" class="btn btn-link  menu-Items" />
+            <div id="ColourPaletteAcc">
+                <table id="colourPalatteTable">
+                    <tr>
+                        <td style="background-color: red" onclick="colourChoice('red')"></td>
+                        <td style="background-color: blue" onclick="colourChoice('blue')"></td>
+                        <td style="background-color: green" onclick="colourChoice('green')"></td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: black" onclick="colourChoice('black')"></td>
+                        <td style="background-color: white" onclick="colourChoice('white')"></td>
+                        <td style="background-color: gray" onclick="colourChoice('red')"></td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: yellow" onclick="colourChoice('yellow')"></td>
+                        <td style="background-color: orange" onclick="colourChoice('orange')"></td>
+                        <td style="background-color: pink" onclick="colourChoice('pink')"></td>
+                    </tr>
+                </table>
+
+            </div>
+            <input type="button" value="Toggle shape menu" id="shapeAccbutton" class="btn btn-link  menu-Items" />
+            <div id="shapeAccordaian">
+                <input type="button" value="Free draw" onclick="shapes('free')" class="btn btn-link  submenu-Items" />
+
+                <input type="button" value="Rectangle" onclick="shapes('rect')" class="btn btn-link  submenu-Items" />
+
+                <input type="button" value="Quadrangle" onclick="shapes('quad')" class="btn btn-link  submenu-Items" />
+
+                <input type="button" value="Arrow" onclick="shapes('arrow')" class="btn btn-link  submenu-Items" />
+
+                <input type="button" value="Line" onclick="shapes('line')" class="btn btn-link  submenu-Items" />
+            </div>
+            <input type="range" min="1" max="10" value="2" step="1" onchange="penSize(this.value)" class="menu-headers" />
+            <p class="menu-headers"> Pen size: </p><p id="pensize" class="menu-headers">2</p>
+            <br />
+            <input type="button" value="erase all" id="erase"  class="btn btn-link menu-Items">
+            <input type="button" id="closeImage" value="Close Image" onclick="openLocalImage()" class="btn btn-link menu-Items" />
+        </div>
+    </div>
+    <div class="main-body" id="image-container">
+        <span class=" glyphicon glyphicon-menu-hamburger" style="font-size:20px; cursor:pointer;" id="controlMenuButton" >Open Menu</span>
+        <div id="fileSelectdiv">
+            <input type="file" id="files" name="files[]" />
+            <div id="dropZone">Drop files here</div>
+           
+            <p>drag and drop  an image file to begin or use button to browse files!</p>
+        </div>
+        <div id="canvasDiv">
+            <canvas class="canvas" id="image-canvas"></canvas>
+            <canvas class="canvas" id="anno-canvas"></canvas>
+           
+        </div>
+
+    </div>
+    <div class="side-bar " id="right-side-menu">
+        <div>
+            <h3>Previous annotations</h3>
+        </div>
+        <div class="sidebar-body" id="annotation">
+            <input type="button" id="closeSidebar" value="close side bar" onclick="toggleSidebar()" />
+            <p id="demo">this is where the annotations from database will fill for reapplying</p>
+            <asp:Button ID="btnSubmit" CssClass="btn" runat="server" OnClick="Button_Click" />
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
